@@ -11,35 +11,79 @@
 
 namespace lp {
 
-static const unsigned char kLoopABytes[] = {
+static const unsigned char kLoopABytes216a[] = {
     0x48, 0x8b, 0x87, 0xd0, 0x00, 0x00, 0x00, 0x48, 0x8b, 0x88, 0x50, 0x08,
     0x00, 0x00, 0x8b, 0x91, 0xc4, 0x01, 0x00, 0x00, 0x03, 0xd3, 0x48, 0x8b,
     0xcf, 0xe8, 0x61, 0x00, 0x00, 0x00, 0xff, 0xc3, 0x48, 0x8b, 0x87, 0xf0,
     0x00, 0x00, 0x00, 0x3b, 0x98, 0x38, 0x05, 0x00, 0x00, 0x7c, 0xd1, 0x80,
     0x7c, 0x24, 0x68, 0x00,
 };
-static const unsigned char kLoopCBytes[] = {
+static const unsigned char kLoopCBytes216a[] = {
     0x48, 0x8b, 0x83, 0xd0, 0x00, 0x00, 0x00, 0x48, 0x8b, 0x88, 0x50, 0x08,
     0x00, 0x00, 0x8b, 0x91, 0xc4, 0x01, 0x00, 0x00, 0x03, 0xd7, 0x48, 0x8b,
     0xcb, 0xe8, 0xe0, 0x00, 0x00, 0x00, 0xff, 0xc7, 0x48, 0x8b, 0x83, 0xf8,
     0x00, 0x00, 0x00, 0x3b, 0xb8, 0x38, 0x05, 0x00, 0x00, 0x7c, 0xd1, 0x83,
     0xbb, 0x00, 0x03, 0x00, 0x00, 0x00,
 };
+static const unsigned char kHash216a[32] = {
+    0x49, 0x3e, 0x2d, 0xeb, 0x77, 0x8f, 0x8b, 0x10, 0x42, 0x61, 0xa9, 0xc8,
+    0x8f, 0x40, 0x2f, 0x20, 0x98, 0xd4, 0xfe, 0x02, 0x26, 0xa6, 0xbd, 0x88,
+    0xd1, 0x5e, 0x99, 0xbd, 0xef, 0xa6, 0xbc, 0x3a,
+};
 
-static const unsigned long kLoopARva = 0x2f431;
-static const unsigned long kLoopAEndRva = 0x2f460;
-static const unsigned long kLoopCRva = 0x3d392;
-static const unsigned long kLoopCEndRva = 0x3d3c1;
+static const unsigned char kLoopABytes2110[] = {
+    0x48, 0x8b, 0x87, 0xd0, 0x00, 0x00, 0x00, 0x48, 0x8b, 0x88, 0x70, 0x08,
+    0x00, 0x00, 0x8b, 0x91, 0xe4, 0x01, 0x00, 0x00, 0x03, 0xd3, 0x48, 0x8b,
+    0xcf, 0xe8, 0x61, 0x00, 0x00, 0x00, 0xff, 0xc3, 0x48, 0x8b, 0x87, 0xf0,
+    0x00, 0x00, 0x00, 0x3b, 0x98, 0x38, 0x05, 0x00, 0x00, 0x7c, 0xd1, 0x80,
+    0x7c, 0x24, 0x68, 0x00,
+};
+static const unsigned char kLoopCBytes2110[] = {
+    0x48, 0x8b, 0x83, 0xd0, 0x00, 0x00, 0x00, 0x48, 0x8b, 0x88, 0x70, 0x08,
+    0x00, 0x00, 0x8b, 0x91, 0xe4, 0x01, 0x00, 0x00, 0x03, 0xd7, 0x48, 0x8b,
+    0xcb, 0xe8, 0xe0, 0x00, 0x00, 0x00, 0xff, 0xc7, 0x48, 0x8b, 0x83, 0xf8,
+    0x00, 0x00, 0x00, 0x3b, 0xb8, 0x38, 0x05, 0x00, 0x00, 0x7c, 0xd1, 0x83,
+    0xbb, 0x00, 0x03, 0x00, 0x00, 0x00,
+};
+static const unsigned char kHash2110[32] = {
+    0x72, 0x8c, 0xa9, 0x56, 0x53, 0xd3, 0x7b, 0x03, 0xbd, 0xe1, 0x8d, 0x1a,
+    0xf4, 0xce, 0xca, 0x26, 0xb5, 0x75, 0xe0, 0x10, 0x52, 0x05, 0xb5, 0x4c,
+    0xfb, 0xce, 0xa8, 0x69, 0x4a, 0xc1, 0x60, 0x35,
+};
+
+struct HostBuild {
+    unsigned long long fileSize;
+    const unsigned char* hash;
+    unsigned long loopARva;
+    unsigned long loopAEndRva;
+    unsigned long loopCRva;
+    unsigned long loopCEndRva;
+    const unsigned char* loopABytes;
+    size_t loopABytesLen;
+    const unsigned char* loopCBytes;
+    size_t loopCBytesLen;
+    unsigned long long viewOffset;
+    unsigned long long layerStartOffset;
+    unsigned long long frameStartOffset;
+    unsigned long long layerNumOffset;
+};
+
+static const HostBuild kKnownBuilds[] = {
+    { 5309440ull, kHash216a, 0x2f431, 0x2f460, 0x3d392, 0x3d3c1,
+      kLoopABytes216a, sizeof(kLoopABytes216a), kLoopCBytes216a, sizeof(kLoopCBytes216a),
+      0x850, 0x1c4, 0x1bc, 0x1c8 },
+    { 5786624ull, kHash2110, 0x2f591, 0x2f5c0, 0x3d372, 0x3d3a1,
+      kLoopABytes2110, sizeof(kLoopABytes2110), kLoopCBytes2110, sizeof(kLoopCBytes2110),
+      0x870, 0x1e4, 0x1dc, 0x1e8 },
+};
 
 static const unsigned long long kRowCountOffset = 0x538;
 static const unsigned long long kLoopAInfoOffset = 0xf0;
 static const unsigned long long kLoopCInfoOffset = 0xf8;
 
 static const unsigned long long kSceneOffset = 0xd0;
-static const unsigned long long kViewOffset = 0x850;
-static const unsigned long long kLayerStartOffset = 0x1c4;
-static const unsigned long long kFrameStartOffset = 0x1bc;
-static const unsigned long long kLayerNumOffset = 0x1c8;
+
+static const HostBuild* g_build = nullptr;
 
 static const DWORD64 kSlotMask = 0xffff00ffull;
 static const DWORD64 kSlotEnable = 0x55ull;
@@ -80,19 +124,19 @@ static int* DeriveStartAddress(DWORD64 object) {
     void* scene = nullptr;
     if (!ReadPtrSafe((void* const*)(object + kSceneOffset), &scene) || !scene) return nullptr;
     void* view = nullptr;
-    if (!ReadPtrSafe((void* const*)((unsigned char*)scene + kViewOffset), &view) || !view) return nullptr;
-    return (int*)((unsigned char*)view + kLayerStartOffset);
+    if (!ReadPtrSafe((void* const*)((unsigned char*)scene + g_build->viewOffset), &view) || !view) return nullptr;
+    return (int*)((unsigned char*)view + g_build->layerStartOffset);
 }
 
 static bool CandidateMatchesEditInfo(int* address) {
     if (!address) return false;
-    unsigned char* view = (unsigned char*)address - kLayerStartOffset;
+    unsigned char* view = (unsigned char*)address - g_build->layerStartOffset;
     const EDIT_INFO info = EditInfo();
     int value = 0;
     if (!ReadIntSafe(address, &value) || value != info.display_layer_start) return false;
-    if (!ReadIntSafe((const int*)(view + kFrameStartOffset), &value) ||
+    if (!ReadIntSafe((const int*)(view + g_build->frameStartOffset), &value) ||
         value != info.display_frame_start) return false;
-    if (!ReadIntSafe((const int*)(view + kLayerNumOffset), &value) ||
+    if (!ReadIntSafe((const int*)(view + g_build->layerNumOffset), &value) ||
         value != info.display_layer_num) return false;
     return true;
 }
@@ -214,14 +258,23 @@ bool DrawHookSupported() {
     static bool result = false;
     if (checked) return result;
     checked = 1;
-    result = ImageIsExpectedBuild() &&
-             ImageBytesMatch(kLoopARva, kLoopABytes, sizeof(kLoopABytes)) &&
-             ImageBytesMatch(kLoopCRva, kLoopCBytes, sizeof(kLoopCBytes));
+    unsigned long long size = 0;
+    unsigned char hash[32] = {};
+    if (ImageFileDigest(&size, hash)) {
+        for (const HostBuild& build : kKnownBuilds) {
+            if (build.fileSize != size || memcmp(hash, build.hash, sizeof(hash)) != 0) continue;
+            if (!ImageBytesMatch(build.loopARva, build.loopABytes, build.loopABytesLen)) continue;
+            if (!ImageBytesMatch(build.loopCRva, build.loopCBytes, build.loopCBytesLen)) continue;
+            g_build = &build;
+            break;
+        }
+    }
+    result = g_build != nullptr;
     if (result) {
-        g_loopA = ImageBase() + kLoopARva;
-        g_loopAEnd = ImageBase() + kLoopAEndRva;
-        g_loopC = ImageBase() + kLoopCRva;
-        g_loopCEnd = ImageBase() + kLoopCEndRva;
+        g_loopA = ImageBase() + g_build->loopARva;
+        g_loopAEnd = ImageBase() + g_build->loopAEndRva;
+        g_loopC = ImageBase() + g_build->loopCRva;
+        g_loopCEnd = ImageBase() + g_build->loopCEndRva;
         LogF(L"レイヤー固定: 本体に直接描かせる方式を使えます");
     } else {
         LogF(L"レイヤー固定: 本体の版が一致しないので取得方式で動きます");
