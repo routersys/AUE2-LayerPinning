@@ -57,11 +57,11 @@ AviUtl ExEdit2 は、レイヤー編集の各行へ、表示開始レイヤー�
 
 ## インストール方法
 
-1. [Releases](https://github.com/routersys/AE2-LayerPinning/releases/latest) ページから `LayerPinning_v1.0.0.au2pkg.zip` をダウンロードしてください。
+1. [Releases](https://github.com/routersys/AE2-LayerPinning/releases/latest) ページから `LayerPinning_v1.1.0.au2pkg.zip` をダウンロードしてください。
 2. AviUtl ExEdit2 を起動し、ダウンロードしたファイルをプレビュー画面へドロップします。
 3. 確認の画面で「このプラグイン・スクリプトを信頼して使用する」を選んでください。インストールの後に AviUtl ExEdit2 が再起動します。
 
-手動で配置する場合は、`LayerPinning_v1.0.0.zip` を展開し、`LayerPinning.aux2` を下記のフォルダーへ置いてください。次に AviUtl ExEdit2 を起動すると確認の画面が出るので、信頼して使用することを選びます。
+手動で配置する場合は、`LayerPinning_v1.1.0.zip` を展開し、`LayerPinning.aux2` を下記のフォルダーへ置いてください。次に AviUtl ExEdit2 を起動すると確認の画面が出るので、信頼して使用することを選びます。
 
 ```
 C:\ProgramData\aviutl2\Plugin\
@@ -183,7 +183,7 @@ AviUtl ExEdit2 が設定ファイルを書き込めない環境では、AviUtl E
 
 ## サードパーティライセンス
 
-本プラグインは以下のサードパーティソフトウェアを使用しています。ライセンスの全文は、リポジトリの [`.github/LICENSE/AviUtl2-PluginSDK.txt`](.github/LICENSE/AviUtl2-PluginSDK.txt) と、配布する `LayerPinning_v1.0.0.zip` の `LICENSE` フォルダーに収録しています。
+本プラグインは以下のサードパーティソフトウェアを使用しています。ライセンスの全文は、リポジトリの [`.github/LICENSE/AviUtl2-PluginSDK.txt`](.github/LICENSE/AviUtl2-PluginSDK.txt) と、配布する `LayerPinning_v1.1.0.zip` の `LICENSE` フォルダーに収録しています。
 
 | ソフトウェア | 用途 | ライセンス | 著作権表示 |
 |---|---|---|---|
