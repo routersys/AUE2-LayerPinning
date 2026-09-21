@@ -17,7 +17,7 @@ COMMON_PLUGIN_TABLE common_plugin_table = {
 EXTERN_C __declspec(dllexport) COMMON_PLUGIN_TABLE* GetCommonPluginTable(void) {
     return &common_plugin_table;
 }
-EXTERN_C __declspec(dllexport) DWORD RequiredVersion() { return 2010000; }
+EXTERN_C __declspec(dllexport) DWORD RequiredVersion() { return 2011000; }
 EXTERN_C __declspec(dllexport) void InitializeLogger(LOG_HANDLE* h) { SetLogHandle(h); }
 EXTERN_C __declspec(dllexport) void InitializeConfig(CONFIG_HANDLE* h) { SetConfigHandle(h); }
 EXTERN_C __declspec(dllexport) bool InitializePlugin(DWORD) { return true; }
